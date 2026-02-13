@@ -294,10 +294,7 @@
                 <div class="kpi-label">Lead Time (días)</div>
                 <div class="kpi-value" id="kpiLeadTime">-</div>
             </div>
-            <div class="chart-container" style="position: relative; height:40vh; width:100%; max-width: 900px; margin: 30px auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-    <h3 style="text-align: center; font-family: sans-serif; color: #333; margin-bottom: 20px;">Estadísticas de Ocupación</h3>
-    <canvas id="miGraficoLimpio"></canvas>
-</div>
+        </div>
 
         <!-- Gráficos principales -->
         <div class="charts-grid">
@@ -830,82 +827,7 @@ Resort Hotel;1;114;2017;June;25;19;1;4;2;1;0;HB;PRT;Offline TA/TO;TA/TO;0;0;0;A;
                 }
             });
         }
-   <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px; max-width: 800px; min-height: 300px;">
-    <h3 style="color: #333; font-family: sans-serif; margin-bottom: 20px;">Ocupación Semanal (%)</h3>
-    <canvas id="graficoOcupacion" width="400" height="200"></canvas>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-
-<script>
-    // Función para dibujar el gráfico
-    function renderChart() {
-        const canvas = document.getElementById('graficoOcupacion');
-        if (!canvas) return;
-
-        new Chart(canvas, {
-            type: 'line',
-            data: {
-                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-                datasets: [{
-                    label: 'Habitaciones Ocupadas',
-                    data: [65, 59, 80, 81, 95, 100, 75],
-                    borderColor: '#4A90E2',
-                    backgroundColor: 'rgba(74, 144, 226, 0.2)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: { beginAtZero: true, max: 100 }
-                }
-            }
-        });
-    }
-
-    // Ejecutamos cuando todo el contenido esté listo
-    if (document.readyState === 'complete') {
-        renderChart();
-    } else {
-        window.addEventListener('load', renderChart);
-    }
-</script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-    (function() {
-        const ctx = document.getElementById('miGraficoLimpio');
-        
-        // Si ya existe un gráfico en este canvas, lo borramos para evitar mezclas
-        let chartStatus = Chart.getChart("miGraficoLimpio");
-        if (chartStatus !== undefined) {
-            chartStatus.destroy();
-        }
-
-        new Chart(ctx, {
-            type: 'bar', // Cambiamos a barras para que sea más claro y no se solape
-            data: {
-                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-                datasets: [{
-                    label: 'Ocupación (%)',
-                    data: [45, 52, 70, 85, 95, 100, 60],
-                    backgroundColor: '#4A90E2',
-                    borderRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false, // Esto evita que el gráfico "explote" de tamaño
-                scales: {
-                    y: { beginAtZero: true, max: 100 }
-                }
-            }
-        });
-    })();
-</script>
+    </script>
 </body>
 </html>
+Cuadro de mando interactivo para análisis de datos - Claude
