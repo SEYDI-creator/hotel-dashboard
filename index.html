@@ -834,5 +834,28 @@ Resort Hotel;1;114;2017;June;25;19;1;4;2;1;0;HB;PRT;Offline TA/TO;TA/TO;0;0;0;A;
             });
         }
     </script>
+    <script>
+    const ctx = document.getElementById('graficoOcupacion').getContext('2d');
+    new Chart(ctx, {
+        type: 'line', // Gráfico de línea para ver tendencias
+        data: {
+            labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+            datasets: [{
+                label: '% de Habitaciones Ocupadas',
+                data: [65, 59, 80, 81, 95, 100, 70], // Datos de ejemplo
+                borderColor: '#4A90E2', // Un azul elegante
+                backgroundColor: 'rgba(74, 144, 226, 0.2)',
+                fill: true,
+                tension: 0.4 // Esto hace que la línea sea curva y moderna
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true, max: 100 }
+            }
+        }
+    });
+</script>
 </body>
 </html>
