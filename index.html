@@ -826,38 +826,49 @@ Resort Hotel;1;114;2017;June;25;19;1;4;2;1;0;HB;PRT;Offline TA/TO;TA/TO;0;0;0;A;
                 }
             });
         }
-    </script>
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px; max-width: 800px;">
-    <h3 style="color: #333; font-family: sans-serif;">Ocupación Semanal (%)</h3>
-    <canvas id="graficoOcupacion"></canvas>
+   <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px; max-width: 800px; min-height: 300px;">
+    <h3 style="color: #333; font-family: sans-serif; margin-bottom: 20px;">Ocupación Semanal (%)</h3>
+    <canvas id="graficoOcupacion" width="400" height="200"></canvas>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 
 <script>
-    // Usamos window.onload para asegurar que todo cargó antes de dibujar
-    window.onload = function() {
-        const ctx = document.getElementById('graficoOcupacion');
-        if (ctx) {
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-                    datasets: [{
-                        label: 'Ocupación %',
-                        data: [65, 59, 80, 81, 95, 100, 70],
-                        borderColor: '#4A90E2',
-                        backgroundColor: 'rgba(74, 144, 226, 0.2)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: { responsive: true }
-            });
-        } else {
-            console.error("No se encontró el elemento 'graficoOcupacion'");
-        }
-    };
+    // Función para dibujar el gráfico
+    function renderChart() {
+        const canvas = document.getElementById('graficoOcupacion');
+        if (!canvas) return;
+
+        new Chart(canvas, {
+            type: 'line',
+            data: {
+                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+                datasets: [{
+                    label: 'Habitaciones Ocupadas',
+                    data: [65, 59, 80, 81, 95, 100, 75],
+                    borderColor: '#4A90E2',
+                    backgroundColor: 'rgba(74, 144, 226, 0.2)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, max: 100 }
+                }
+            }
+        });
+    }
+
+    // Ejecutamos cuando todo el contenido esté listo
+    if (document.readyState === 'complete') {
+        renderChart();
+    } else {
+        window.addEventListener('load', renderChart);
+    }
 </script>
 </body>
 </html>
