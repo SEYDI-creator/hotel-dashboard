@@ -76,4 +76,3 @@ Freelance especializado en transformar datos complejos en insights accionables y
 <p align="center">
   <i>"Los datos son el nuevo petróleo, pero los insights son la gasolina que mueve las decisiones."</i>
 </p>
-Cuadro de mando interactivo para análisis de datos - Claude
