@@ -834,28 +834,37 @@ Resort Hotel;1;114;2017;June;25;19;1;4;2;1;0;HB;PRT;Offline TA/TO;TA/TO;0;0;0;A;
             });
         }
     </script>
-    <script>
-    const ctx = document.getElementById('graficoOcupacion').getContext('2d');
-    new Chart(ctx, {
-        type: 'line', // Gráfico de línea para ver tendencias
-        data: {
-            labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
-            datasets: [{
-                label: '% de Habitaciones Ocupadas',
-                data: [65, 59, 80, 81, 95, 100, 70], // Datos de ejemplo
-                borderColor: '#4A90E2', // Un azul elegante
-                backgroundColor: 'rgba(74, 144, 226, 0.2)',
-                fill: true,
-                tension: 0.4 // Esto hace que la línea sea curva y moderna
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: { beginAtZero: true, max: 100 }
-            }
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 20px; max-width: 800px;">
+    <h3 style="color: #333; font-family: sans-serif;">Ocupación Semanal (%)</h3>
+    <canvas id="graficoOcupacion"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Usamos window.onload para asegurar que todo cargó antes de dibujar
+    window.onload = function() {
+        const ctx = document.getElementById('graficoOcupacion');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+                    datasets: [{
+                        label: 'Ocupación %',
+                        data: [65, 59, 80, 81, 95, 100, 70],
+                        borderColor: '#4A90E2',
+                        backgroundColor: 'rgba(74, 144, 226, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: { responsive: true }
+            });
+        } else {
+            console.error("No se encontró el elemento 'graficoOcupacion'");
         }
-    });
+    };
 </script>
 </body>
 </html>
